@@ -4,17 +4,14 @@ import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Notifications
-import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -40,6 +37,7 @@ import androidx.compose.ui.unit.sp
 import com.android.noteapp.R
 import com.android.noteapp.components.NoteButton
 import com.android.noteapp.components.NoteInputText
+import com.android.noteapp.data.NoteDataSource
 import com.android.noteapp.model.Note
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -120,7 +118,6 @@ fun NoteScreen(
         }
     }
 }
-
 @Composable
 fun NoteRow(
     modifier: Modifier = Modifier,
@@ -145,24 +142,8 @@ fun NoteRow(
         }
     }
 }
-@Composable
-fun App(){
-    Surface(modifier = Modifier.fillMaxWidth()) {
-        Card(modifier = Modifier.padding(3.dp)) {
-            Text(text = "Set Value",
-                modifier = Modifier
-                    .padding(40.dp)
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .fillMaxSize(),
-                style = TextStyle(fontSize = 40.sp),
-                fontWeight = FontWeight.Bold,
-                color = Color.Green)
-        }
-    }
-}
 @Preview(showBackground = true)
 @Composable
 fun NotesScreenPreview(){
-    //NoteScreen(notes = NoteDataSource().loadNotes(), onAddNote = {}, onRemoveNote = {})
+    NoteScreen(notes = NoteDataSource().loadNotes(), onAddNote = {}, onRemoveNote = {})
 }
